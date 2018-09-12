@@ -90,9 +90,8 @@ func (a *App) VolumeCreate(w http.ResponseWriter, r *http.Request) {
 		// Place here correct combinations
 		switch {
 		case d.Data == 2 && d.Redundancy == 1:
-		case d.Data == 4 && d.Redundancy == 2:
-		case d.Data == 8 && d.Redundancy == 3:
-		case d.Data == 8 && d.Redundancy == 4:
+		case d.Data == 4 && d.Redundancy <= 2:
+		case d.Data == 8 && d.Redundancy <= 4:
 		default:
 			http.Error(w,
 				fmt.Sprintf("Invalid dispersion combination: %v+%v", d.Data, d.Redundancy),
